@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lab-10-atm-machine-MaxSultan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3347dadc3e77383f1ef8a0d113f680feb69db8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba5f707c0d80bff00738aa894937e89eb085adaf")]
 [assembly: System.Reflection.AssemblyProductAttribute("lab-10-atm-machine-MaxSultan")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lab-10-atm-machine-MaxSultan")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
