@@ -3,8 +3,10 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Linq;
 using System.Globalization;
+using System.Diagnostics;
 
-static string[] LoadFileSafe(string filePath){
+static string[] LoadFileSafe(string filePath)
+{
     string[] result = [];
     if(File.Exists(filePath))
         result = File.ReadAllLines(filePath);
@@ -57,7 +59,8 @@ static string ComputeSha256Hash(string rawData)
     return builder.ToString();
 }
 
-static void WriteNewTransaction(string userId, decimal amount, DateTime time){
+static void WriteNewTransaction(string userId, decimal amount, DateTime time)
+{
     List<string> serializedTransactions = LoadBankTransactions().ToList();
     serializedTransactions.Add($"{userId},{amount},{time.ToString("yyyy-MM-dd HH:mm:ss")}");
     File.WriteAllLines("transactions.txt", serializedTransactions);
@@ -73,16 +76,19 @@ static void Withdraw(int amount, string userId)
         Console.WriteLine("Withdraw Amount was larger than available balance");
         return;
     }
+    Debug.Assert(amount < 0);
     WriteNewTransaction(userId, (decimal)amount, DateTime.Now);
     Console.WriteLine($"Successfully withdrawn ${Math.Abs(amount)}");
 }
 
-static void Deposit(int amount, string userId){
+static void Deposit(int amount, string userId)
+{
     // do we need to check if this number is bigger than the largest number we can handle? What do we do in that case?
     if(amount < 0) {
         Console.WriteLine("Deposit amounts should be positive");
         return;
     }
+    Debug.Assert(amount > 0);
     WriteNewTransaction(userId, (decimal)amount, DateTime.Now);
     Console.WriteLine($"Successfully deposited ${Math.Abs(amount)}");
 }
